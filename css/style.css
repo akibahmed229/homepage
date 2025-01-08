@@ -76,15 +76,62 @@ body.darkMode .bar {
 
 /* Left Container */
 .leftContainer {
+  padding: 1rem;
   border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
 }
 
-.leftContainer div {
-  padding: 0.6rem;
+.todoList {
   border-bottom: 1px solid #ccc;
   transition: background-color 0.3s ease;
+  padding: 1rem 0 1rem 0;
+  border-radius: 0.5rem;
+}
+
+.todoList h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.tasksContainer {
+  margin-top: 0.6rem;
+}
+
+.tasks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  margin: 0.6rem 0;
+  transition: background-color 0.3s ease;
+  min-height: 3rem;
+  border: 1px solid #ccc;
+}
+
+.editTask {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.editTask:hover {
+  background-color: #8ec07c;
+}
+
+.deleteTask {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+}
+
+.deleteTask:hover {
+  background-color: #cc241d;
 }
 
 #taskInput {

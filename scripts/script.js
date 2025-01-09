@@ -1,47 +1,39 @@
 import TaskService from "./task.js";
+import ThemeService from "./theme.js";
 
-// Select Elements
-const toggleThemeButton = document.getElementById("toggleTheme");
-const toggleThemeIcon = document.getElementById("toggleThemeIcon");
-const body = document.body;
+// *HomePage object - module scaffolding
+const HomePage = {};
 
 // Retrieve Tasks from Local Storage or Initialize
-function getTasks() {
+HomePage.getTasks = () => {
   try {
     return JSON.parse(localStorage.getItem("tasks")) || [];
   } catch (error) {
     console.error("Error reading tasks from localStorage:", error);
     return [];
   }
-}
+};
+
+// Retrieve Theme from Local Storage or Initialize
+HomePage.getTheme = () => {
+  const savedTheme = localStorage.getItem("theme") || "light"; // Default to light mode
+  return savedTheme;
+};
 
 // new instance of TaskService
-const taskService = new TaskService(getTasks());
+const taskService = new TaskService(HomePage.getTasks());
+// new instance of ThemeService
+const themeService = new ThemeService(HomePage.getTheme());
 
-// Function to Set Theme
-function setTheme(theme) {
-  if (theme === "dark") {
-    body.classList.add("darkMode");
-    toggleThemeIcon.src = "./public/images/light-svgrepo-com.svg";
-  } else {
-    body.classList.remove("darkMode");
-    toggleThemeIcon.src = "./public/images/dark-svgrepo-com.svg";
-  }
-  localStorage.setItem("theme", theme); // Save theme in localStorage
-}
+// *Init function
+HomePage.init = () => {
+  // Initialize Theme
+  themeService.setTheme();
+  themeService.themeHandler();
 
-// Initialize Theme on Page Load
-(function initializeTheme() {
-  const savedTheme = localStorage.getItem("theme") || "light"; // Default to light mode
-  setTheme(savedTheme);
-})();
+  // Initialize Task
+  taskService.displayTasks();
+  taskService.formHandler();
+};
 
-// Event Listener for Theme Toggle
-toggleThemeButton.addEventListener("click", () => {
-  const currentTheme = body.classList.contains("darkMode") ? "dark" : "light";
-  setTheme(currentTheme === "dark" ? "light" : "dark");
-});
-
-// Initialize Task
-taskService.displayTasks();
-taskService.formHandler();
+HomePage.init();

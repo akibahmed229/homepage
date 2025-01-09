@@ -42,7 +42,7 @@ class TaskService {
       taskElement.classList.add("tasks");
       taskElement.innerHTML = `
         <p>${task.text}</p>
-        <div>
+        <div class="taskButton">
             <button class="editTask" data-id="${task.id}" aria-label="Edit Task">
                 <img src="public/images/edit.svg" alt="Edit Task Icon" width="20" height="20" />
             </button>

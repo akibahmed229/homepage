@@ -124,6 +124,17 @@ body.darkMode .bar {
   border: 1px solid var(--border-color);
 }
 
+.tasks p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.taskButton {
+  display: flex;
+  flex: row;
+  justify-items: space-between;
+}
+
 .editTask,
 .deleteTask {
   cursor: pointer;

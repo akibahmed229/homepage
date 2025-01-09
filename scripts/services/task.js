@@ -1,3 +1,21 @@
+/**
+ * TaskService Class
+ * Manages task creation, editing, deletion, and persistence.
+ *
+ * Methods:
+ * - constructor(tasks): Initializes the TaskService with an array of tasks (or empty by default).
+ * - formHandler(): Sets up form submission to handle new task additions.
+ * - addTask(taskText): Adds a new task, updates the task list, and saves it in localStorage.
+ * - displayTasks(): Renders all tasks in the UI and attaches event listeners to task buttons.
+ * - attachTaskEventListeners(): Attaches click events to edit and delete buttons for tasks.
+ * - editTask(id): Prompts the user to edit a task and updates localStorage.
+ * - deleteTask(id): Removes a task by ID and updates the task list and localStorage.
+ *
+ * Usage:
+ * 1. Instantiate TaskService with existing or empty tasks.
+ * 2. Call formHandler() for task input handling or displayTasks() to render tasks dynamically.
+ */
+
 class TaskService {
   // Initializes tasks from localStorage or provided array
   constructor(tasks) {

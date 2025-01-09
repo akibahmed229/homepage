@@ -1,3 +1,23 @@
+/**
+ * Main Script for HomePage
+ * Initializes and orchestrates task and theme management using TaskService and ThemeService.
+ *
+ * Modules:
+ * - TaskService: Manages tasks (add, edit, delete, display).
+ * - ThemeService: Manages light/dark theme toggling and persistence.
+ *
+ * HomePage Object:
+ * - getTasks(): Retrieves tasks from localStorage or initializes an empty array.
+ * - getTheme(): Retrieves the saved theme from localStorage or defaults to "light".
+ * - init(): Main initialization function to set up TaskService and ThemeService.
+ *
+ * Initialization Steps:
+ * 1. Retrieve tasks and theme from localStorage.
+ * 2. Instantiate TaskService and ThemeService with retrieved data.
+ * 3. Initialize and set the theme using ThemeService.
+ * 4. Display existing tasks and set up task form handling using TaskService.
+ */
+
 import TaskService from "./services/task.js";
 import ThemeService from "./services/theme.js";
 

@@ -82,14 +82,18 @@ class TaskService {
 
   // Edits a task's text and updates localStorage
   editTask(id) {
+    // taskToEdit is not a copy of the object; it’s a reference to the same object in the this.tasks array.
+    // When you use find, it doesn't create a copy of the object; it gives you a reference to the actual object in memory.
     const taskToEdit = this.tasks.find((task) => task.id == id);
 
     if (taskToEdit) {
       const newTaskText = prompt("Edit Your Task:", taskToEdit.text);
 
       if (newTaskText && newTaskText.trim() !== "") {
+        // Modifying taskToEdit.text directly changes the corresponding object inside this.tasks.
         taskToEdit.text = newTaskText; // Updates task text
         localStorage.setItem("tasks", JSON.stringify(this.tasks)); // Saves updated tasks
+
         this.displayTasks(); // Refreshes task display
       } else {
         alert("Please enter a task to edit"); // Alerts if input is invalid

@@ -11,11 +11,11 @@
 
 <body>
     <!-- Content Container -->
-    <main>
-        <div class="container">
+    <main aria-label="Main">
+        <div class="container" aria-label="COntainer">
             <!-- Left Content Container -->
-            <div class="leftContainer">
-                <div class="todoList">
+            <div class="leftContainer" aria-label="Left Container">
+                <div class="todoList" aria-label="Task Form">
                     <h2>Todo List</h2>
                     <div class="inputContainer">
                         <form id="form">
@@ -25,18 +25,17 @@
                     </div>
                 </div>
 
-                <div class="tasksContainer">
-                    <h2>Tasks</h2>
+                <div class="tasksContainer" aria-label="Tasks Container">
                     <!-- Tasks will be added here -->
                 </div>
 
                 <!-- Main Content Container -->
-                <div class="mainContainer"></div>
+                <div class="mainContainer" aria-label="Right Container"></div>
             </div>
     </main>
 
     <!-- Footer with Theme Toggle Button -->
-    <footer class="bar">
+    <footer class="bar" aria-label="Footer">
         <button id="toggleTheme" title="Toggle Theme">
             <img id="toggleThemeIcon" src="public/images/dark-svgrepo-com.svg" alt="Toggle Theme Icon" width="50"
                 height="50" />

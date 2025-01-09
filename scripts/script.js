@@ -15,7 +15,8 @@ function getTasks() {
   }
 }
 
-const taskService = new TaskService(getTasks()); // new instance of TaskService
+// new instance of TaskService
+const taskService = new TaskService(getTasks());
 
 // Function to Set Theme
 function setTheme(theme) {

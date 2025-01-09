@@ -1,45 +1,45 @@
 class TaskService {
-  // Constructor to initialize tasks array from localStorage
+  // Initializes tasks from localStorage or provided array
   constructor(tasks) {
     this.tasks = tasks;
   }
 
-  // Form Submit Event Handler
+  // Sets up form submission handler for adding new tasks
   formHandler() {
     const taskInput = document.getElementById("taskInput");
     const form = document.getElementById("form");
 
-    // Form Submission
+    // Prevents default form behavior and handles task input
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const task = taskInput.value.trim();
       if (task) {
-        this.addTask(task);
-        taskInput.value = "";
+        this.addTask(task); // Adds the task
+        taskInput.value = ""; // Clears input field
       } else {
-        alert("Please enter a task");
+        alert("Please enter a task"); // Alerts if input is empty
       }
     });
   }
 
-  // Add Task
+  // Adds a task to the list and updates localStorage
   addTask(taskText) {
     const newTask = { id: Date.now(), text: taskText, completed: false };
-    this.tasks.push(newTask);
+    this.tasks.push(newTask); // Adds new task to tasks array
 
-    localStorage.setItem("tasks", JSON.stringify(this.tasks));
-    this.displayTasks(); // Refresh task display
+    localStorage.setItem("tasks", JSON.stringify(this.tasks)); // Saves to localStorage
+    this.displayTasks(); // Updates task display
   }
 
-  // Display Tasks
+  // Displays all tasks in the tasks container
   displayTasks() {
-    const tasksContainer = document.querySelector(".tasksContainer"); // querySelector to get a single element
-    tasksContainer.innerHTML = ""; // Clear the container first to avoid duplication
+    const tasksContainer = document.querySelector(".tasksContainer");
+    tasksContainer.innerHTML = ""; // Clears existing tasks
 
     this.tasks.forEach((task) => {
+      // Creates a task element and sets its content
       const taskElement = document.createElement("div");
       taskElement.classList.add("tasks");
-
       taskElement.innerHTML = `
         <p>${task.text}</p>
         <div>
@@ -50,19 +50,20 @@ class TaskService {
                 <img src="public/images/delete.svg" alt="Delete Task Icon" width="20" height="20" />
             </button>
         </div>
-     `;
+      `;
 
-      tasksContainer.append(taskElement); // Append task to the container
+      tasksContainer.append(taskElement); // Adds the task to the container
     });
 
-    this.attachTaskEventListeners(); // Add event listeners for edit and delete
+    this.attachTaskEventListeners(); // Attaches edit/delete button events
   }
 
-  // Attach Event Listeners to Task Buttons
+  // Attaches click events to edit and delete buttons for each task
   attachTaskEventListeners() {
     const editButtons = document.querySelectorAll(".editTask");
     const deleteButtons = document.querySelectorAll(".deleteTask");
 
+    // Adds edit button functionality
     editButtons.forEach((button) => {
       button.addEventListener("click", (e) => {
         const taskId = e.target.closest("button")?.dataset?.id;
@@ -70,6 +71,7 @@ class TaskService {
       });
     });
 
+    // Adds delete button functionality
     deleteButtons.forEach((button) => {
       button.addEventListener("click", (e) => {
         const taskId = e.target.closest("button")?.dataset?.id;
@@ -78,7 +80,7 @@ class TaskService {
     });
   }
 
-  // Edit Task
+  // Edits a task's text and updates localStorage
   editTask(id) {
     const taskToEdit = this.tasks.find((task) => task.id == id);
 
@@ -86,21 +88,21 @@ class TaskService {
       const newTaskText = prompt("Edit Your Task:", taskToEdit.text);
 
       if (newTaskText && newTaskText.trim() !== "") {
-        taskToEdit.text = newTaskText; // Update task Text
-        localStorage.setItem("tasks", JSON.stringify(this.tasks));
-        this.displayTasks(); // Refresh task display
+        taskToEdit.text = newTaskText; // Updates task text
+        localStorage.setItem("tasks", JSON.stringify(this.tasks)); // Saves updated tasks
+        this.displayTasks(); // Refreshes task display
       } else {
-        alert("Please enter a task to edit");
+        alert("Please enter a task to edit"); // Alerts if input is invalid
       }
     }
   }
 
-  // Delete Task
+  // Deletes a task and updates localStorage
   deleteTask(id) {
-    this.tasks = this.tasks.filter((task) => task.id != id);
+    this.tasks = this.tasks.filter((task) => task.id != id); // Removes task by ID
 
-    localStorage.setItem("tasks", JSON.stringify(this.tasks));
-    this.displayTasks(); // Refresh task display
+    localStorage.setItem("tasks", JSON.stringify(this.tasks)); // Saves updated tasks
+    this.displayTasks(); // Refreshes task display
   }
 }
 

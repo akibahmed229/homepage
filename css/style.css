@@ -1,3 +1,14 @@
+:root {
+  /* Color */
+  --border-color: #ccc;
+  --primary-hover-color: #8ec07c;
+  --secondary-hover-color: #d79921;
+  --danger-hover-color: #cc241d;
+
+  /* Border */
+  --border-radius: 0.5rem;
+}
+
 /* General Reset */
 * {
   margin: 0;
@@ -33,6 +44,7 @@ body {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   /* Ensure the bar stays above other content */
 }
 
@@ -41,7 +53,7 @@ body {
   cursor: pointer;
   border: none;
   background: none;
-  padding: 5px;
+  padding: 0.4rem;
 }
 
 #toggleTheme img {
@@ -80,13 +92,14 @@ body.darkMode .bar {
   border-right: 1px solid #ccc;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2.5rem;
 }
 
 .todoList {
   border-bottom: 1px solid #ccc;
   transition: background-color 0.3s ease;
   padding: 1rem 0 1rem 0;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .todoList h2 {
@@ -103,35 +116,28 @@ body.darkMode .bar {
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   margin: 0.6rem 0;
   transition: background-color 0.3s ease;
   min-height: 3rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
 }
 
-.editTask {
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-}
-
-.editTask:hover {
-  background-color: #8ec07c;
-}
-
+.editTask,
 .deleteTask {
   cursor: pointer;
   border: none;
   background: none;
   padding: 0.6rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+.editTask:hover {
+  background-color: var(--primary-hover-color);
 }
 
 .deleteTask:hover {
-  background-color: #cc241d;
+  background-color: var(--danger-hover-color);
 }
 
 #taskInput {
@@ -140,7 +146,7 @@ body.darkMode .bar {
   font-size: 1.2rem;
   width: 70%;
   padding: 0.6rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   outline: solid 1px #ccc;
 }
 
@@ -160,9 +166,15 @@ body.darkMode .bar {
   padding: 0.6rem;
   margin: 0.6rem 0 0 0.6rem;
   font: 1.2rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 #addTask:hover {
   background-color: #f0c929;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }

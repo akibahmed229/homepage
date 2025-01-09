@@ -1,5 +1,5 @@
-import TaskService from "./task.js";
-import ThemeService from "./theme.js";
+import TaskService from "./services/task.js";
+import ThemeService from "./services/theme.js";
 
 // *HomePage object - module scaffolding
 const HomePage = {};
@@ -16,17 +16,22 @@ HomePage.getTasks = () => {
 
 // Retrieve Theme from Local Storage or Initialize
 HomePage.getTheme = () => {
-  const savedTheme = localStorage.getItem("theme") || "light"; // Default to light mode
-  return savedTheme;
+  try {
+    const savedTheme = localStorage.getItem("theme") || "light"; // Default to light mode
+    return savedTheme;
+  } catch (error) {
+    console.error("Error readin theme from localStorage:", error);
+    return "light";
+  }
 };
-
-// new instance of TaskService
-const taskService = new TaskService(HomePage.getTasks());
-// new instance of ThemeService
-const themeService = new ThemeService(HomePage.getTheme());
 
 // *Init function
 HomePage.init = () => {
+  // new instance of TaskService
+  const taskService = new TaskService(HomePage.getTasks());
+  // new instance of ThemeService
+  const themeService = new ThemeService(HomePage.getTheme());
+
   // Initialize Theme
   themeService.setTheme();
   themeService.themeHandler();

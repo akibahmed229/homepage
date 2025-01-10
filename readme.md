@@ -35,12 +35,12 @@ Welcome to the **Home Page Project**! This is an ongoing web development project
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/home-page-project.git
+   git clone https://github.com/akibahmed229/homepage
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd home-page-project
+   cd homepage
    ```
 3. Open `index.html` in your browser to view the project.
 

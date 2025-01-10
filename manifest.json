@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Custom New Tab",
+  "short_name": "homepage",
   "version": "1.0",
-  "description": "My custom new tab page",
+  "description": "Overrides the browsers newtab page with a custom startpage.",
+  "author": "akibahmed229",
   "chrome_url_overrides": {
     "newtab": "index.html"
   }

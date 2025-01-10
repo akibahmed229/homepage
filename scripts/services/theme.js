@@ -19,6 +19,17 @@ class ThemeService {
     this.body = document.body;
   }
 
+  // Function to Change input color
+  setInputTextColor(theme = this.theme) {
+    const taskInput = document.querySelector("#taskInput");
+
+    if (theme === "dark") {
+      taskInput.style.color = "white";
+    } else {
+      taskInput.style.color = "black";
+    }
+  }
+
   // Function to Set Theme
   setTheme(theme = this.theme) {
     const toggleThemeIcon = document.getElementById("toggleThemeIcon");
@@ -31,7 +42,9 @@ class ThemeService {
       this.body.classList.remove("darkMode");
       toggleThemeIcon.src = "./public/images/dark-svgrepo-com.svg";
     }
+
     localStorage.setItem("theme", theme); // Save theme in localStorage
+    this.setInputTextColor(theme);
   }
 
   // Function to Handle Theme Toggle
